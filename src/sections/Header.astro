@@ -1,19 +1,40 @@
 ---
 
 ---
-<section class="bg-yellow-600 min-h-14 flex justify-between">
+<section class="bg-surface min-h-14 flex justify-around items-center">
     <div>
-        <p>imagen</p>
+        <p class="font-primary">imagen Spinnaker </p>
     </div>
     <div>
-        <ul>
-            <li>link</li>
-            <li>link</li>
-            <li>link</li>
-            <li>link</li>
+        <ul class="flex gap-4 font-primary text-secondary">
+            <li>INICIO</li>
+            <li>PROYECTOS</li>
+            <li>SOBRE MI</li>
+            <li>CONTACTO</li>
         </ul>
     </div>
+    <button id="themeToggle" class="bg-accent  text-background font-bold py-2 px-4 rounded">
+  Button
+</button>
     <div>
-        <span>amburguesa</span>
+        <span class="font-accent">amburguesa</span>
     </div>
 </section>
+
+<script is:inline>
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const storedTheme = localStorage.getItem('theme');
+
+  if (storedTheme === 'dark') {
+    root.classList.add('dark');
+  }
+
+  toggle.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem(
+      'theme',
+      root.classList.contains('dark') ? 'dark' : 'light'
+    );
+  });
+</script>
