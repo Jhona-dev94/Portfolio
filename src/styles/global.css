@@ -17,6 +17,11 @@
     
 }
 
+html {
+    background-color: var(--color-background);
+    scroll-behavior: smooth;
+}
+
 .dark {
   --color-background: #0F1214;   
   --color-surface: #161A1D;      

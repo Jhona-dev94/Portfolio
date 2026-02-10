@@ -1,40 +1,169 @@
 ---
+let open = false;
 
+const toggleMenu = () => {
+  open = !open;
+};
 ---
-<section class="bg-surface min-h-14 flex justify-around items-center">
-    <div>
-        <p class="font-primary">imagen Spinnaker </p>
-    </div>
-    <div>
-        <ul class="flex gap-4 font-primary text-secondary">
-            <li>INICIO</li>
-            <li>PROYECTOS</li>
-            <li>SOBRE MI</li>
-            <li>CONTACTO</li>
-        </ul>
-    </div>
-    <button id="themeToggle" class="bg-accent  text-background font-bold py-2 px-4 rounded">
-  Button
-</button>
-    <div>
-        <span class="font-accent">amburguesa</span>
-    </div>
-</section>
 
+<section id="header" class="sticky top-0">
+  <nav
+    class="bg-surface min-h-20 flex justify-around items-center border-b-2 border-accent"
+  >
+    <div>
+      <img
+        class="h-8 md:h-10"
+        id="logoDesktop"
+        src="/images/logolight.webp"
+        alt="logo"
+      />
+    </div>
+
+    <ul
+      class="font-accent font-bold text-secondary hidden md:flex md:justify-around md:items-center md:gap-8 lg:gap-28"
+    >
+      <li
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent "
+      >
+        <a href="#hero">HOME</a>
+      </li>
+      <li
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent"
+      >
+        <a href="#proyect">PROYECTS</a>
+      </li>
+      <li
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent"
+      >
+        <a href="#about">ABOUT ME</a>
+      </li>
+      <li
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent"
+      >
+        <a href="#contact">CONTACTS</a>
+      </li>
+    </ul>
+
+    <div>
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input id="themeToggle" class="sr-only peer" type="checkbox" />
+        <div
+          class="w-12 h-6 rounded-full bg-linear-to-r from-background to-accent peer-checked:from-accent peer-checked:to-background transition-all duration-500
+        after:content-['☀️'] after:absolute after:top-0.5 after:left-0.5 after:bg-background after:rounded-full after:w-5 after:h-5 after:flex after:items-center after:justify-center after:text-xs after:text-foreground after:shadow-md after:transition-all after:duration-500 peer-checked:after:content-['🌙'] peer-checked:after:translate-x-6 md:w-20 md:h-10 md:after:w-8 md:after:h-8 md:after:top-1 md:after:left-1 md:after:text-lg md:peer-checked:after:translate-x-10"
+        >
+        </div>
+      </label>
+    </div>
+    <div class="md:hidden">
+      <button id="menuToggle" class="text-primary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+  <div
+    id="mobileMenu"
+    class="fixed top-0 left-0 h-screen w-auto bg-surface border-r-2 border-accent
+         transform -translate-x-full transition-transform duration-300 ease-in-out
+         md:hidden z-50"
+  >
+    <ul class="flex flex-col gap-6 mt-24 px-6 font-accent text-secondary">
+      <img
+        class="h-10 md:h-10"
+        id="logoMobile"
+        src="/images/logolight.webp"
+        alt="logo"
+      />
+      <li class="hover:text-primary cursor-pointer"><a href="#hero">INICIO</a></li>
+      <li class="hover:text-primary cursor-pointer"><a href="#proyect">PROYECTOS</a></li>
+      <li class="hover:text-primary cursor-pointer"><a href="#about">SOBRE MI</a></li>
+      <li class="hover:text-primary cursor-pointer"><a href="#contact">CONTACTO</a></li>
+    </ul>
+  </div>
+</section>
 <script is:inline>
   const root = document.documentElement;
-  const toggle = document.getElementById('themeToggle');
-  const storedTheme = localStorage.getItem('theme');
+  const logoDesktop = document.getElementById("logoDesktop");
+  const logoMobile = document.getElementById("logoMobile");
+  const toggle = document.getElementById("themeToggle");
+  const checkbox = document.getElementById("themeToggle");
 
-  if (storedTheme === 'dark') {
-    root.classList.add('dark');
-  }
+  const setTheme = (theme) => {
+    const isDark = theme === "dark";
 
-  toggle.addEventListener('click', () => {
-    root.classList.toggle('dark');
-    localStorage.setItem(
-      'theme',
-      root.classList.contains('dark') ? 'dark' : 'light'
-    );
+    root.classList.toggle("dark", isDark);
+    checkbox.checked = isDark;
+
+    const logoSrc = isDark ? "/images/logodark.webp" : "/images/logolight.webp";
+
+    logoDesktop.src = logoSrc;
+    logoMobile.src = logoSrc;
+
+    localStorage.setItem("theme", theme);
+  };
+
+  const storedTheme = localStorage.getItem("theme") || "light";
+  setTheme(storedTheme);
+
+  toggle.addEventListener("click", () => {
+    setTheme(checkbox.checked ? "dark" : "light");
   });
+
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("-translate-x-full");
+    mobileMenu.classList.toggle("translate-x-0");
+  });
+  const closeMenu = () => {
+    mobileMenu.classList.add("-translate-x-full");
+    mobileMenu.classList.remove("translate-x-0");
+  };
+
+  mobileMenu.querySelectorAll("li").forEach((item) => {
+    item.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      mobileMenu.classList.contains("translate-x-0") &&
+      !mobileMenu.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ) {
+      closeMenu();
+    }
+  });
+
+  const nav = document.querySelector("nav");
+
+  window.addEventListener("scroll", () => {
+  if (window.scrollY > 30) {
+    nav.classList.add(
+      "backdrop-blur-xl",
+      "bg-surface/60"
+    );
+    nav.classList.remove("bg-surface");
+  } else {
+    nav.classList.remove(
+      "backdrop-blur-xl",
+      "bg-surface/60"
+    );
+    nav.classList.add("bg-surface");
+  }
+});
+
 </script>
