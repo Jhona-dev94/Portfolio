@@ -1,11 +1,98 @@
-<section id="hero" class="top-0">
-  <div class="bg-background min-h-screen flex flex-col justify-center items-center text-center">
-    <h1 class="font-primary text-accent text-3xl">
-      SOFTWARE DEVELOPER
-    </h1>
+<section id="hero">
+  <div
+    class="bg-background min-h-screen flex flex-col md:flex-row justify-center md:justify-around items-center text-center"
+  >
+    <div class="flex justify-items-center">
+      <div
+        class="mt-20 md:mt-0 size-60 md:size-100 lg:size-120 mask-radial-from-60% mask-radial-to-70% bg-[url(/images/Perfil.webp)] bg-cover bg-center"
+      >
+      </div>
+    </div>
+    <div class="py-4 md:pt-0">
+      <span
+        class="md:[writing-mode:vertical-rl] md:[text-orientation:upright] text-primary font-primary text-lg text- bold md:text-2xl tracking-widest"
+      >
+        JHONATAN VARGAS
+      </span>
+    </div>
 
-    <h1 class="font-primary text-primary text-3xl">
-      Desarrollador frontend para toda Bolivia
-    </h1>
+    <div
+      class="flex flex-col pt-5 gap-5 items-center md:items-start text-center md:text-start"
+    >
+      <h1 class="font-primary text-accent text-4xl md:text-5xl">
+        FRONTEND DEVELOPER
+      </h1>
+      <h2 class="font-secondary text-secondary text-md md:text-2xl">
+        Clean interfaces. Solid code. Real results.
+      </h2>
+      <button
+        id="openDialog"
+        class="px-8 py-2 text-primary font-primary text-lg rounded-full shadow-lg transition-transform transform bg-transparent border-2 border-primary hover:text-accent hover:scale-105 hover:border-accent hover:shadow-accent/50 hover:shadow-2xl focus:scale-105 focus:border-accent focus:shadow-accent/50 focus:shadow-2xl focus:text-accent cursor-pointer"
+      >
+        Get in touch
+      </button>
+      <dialog id="dialog" class="p-0 rounded-xl backdrop:bg-black/50">
+        <div class="fixed inset-0 flex items-center justify-center">
+          <div
+            id="panel"
+            class="bg-secondary text-background max-w-lg w-auto 
+             rounded-xl shadow-2xl m-4 animate-fade-in animate-duration-300"
+          >
+          <div class="bg-background p-2 text-accent rounded-t-lg">
+            <h3 class="text-lg text-start font-primary my-4 mx-4">
+              Let's build something great together
+            </h3>
+          </div>
+          <div class="bg-linear-to-b from-secondary to-background/50 rounded-b-lg">
+            <p class="m-4 text-background prose font-secondary">
+              I’m currently available for freelance work and exciting projects.
+              If you have an idea in mind, let’s talk about it. I usually reply
+              within 24 hours.
+            </p>
+            <div class="flex justify-around p-4">
+              <a href="https://wa.me/59176721388?text=Hello%20Jhonatan,%20I%20would%20like%20to%20work%20with%20you." target="_blank">
+                <svg class="size-16 bg-background p-3 rounded-xl hover:animate-tada hover:scale-105">
+                <use href="/sprite.svg#whatsapp"/>
+              </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/jhonavargas94" target="_blank">
+                <svg class="size-16 bg-background p-3 rounded-xl hover:animate-tada hover:scale-105">
+                <use href="/sprite.svg#linkedin"/>
+              </svg>
+              </a>
+              <a href="mailto:jonah_9420@hotmail.com?subject=Project%20Inquiry&body=Hello%20Jhonatan,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank">
+                <svg class="size-16 bg-background p-3 rounded-xl hover:animate-tada hover:scale-105">
+                <use href="/sprite.svg#outlook"/>
+              </svg>
+              </a>
+            </div>
+          </div>
+          </div>
+        </div>
+      </dialog>
+    </div>
   </div>
 </section>
+
+<script>
+  const dialog = document.getElementById("dialog") as HTMLDialogElement;
+  const openBtn = document.getElementById("openDialog");
+  const closeBtn = document.getElementById("closeDialog");
+  const panel = document.getElementById("panel");
+
+  openBtn?.addEventListener("click", () => {
+    dialog.showModal();
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    dialog.close();
+  });
+
+  dialog?.addEventListener("click", () => {
+    dialog.close();
+  });
+
+  panel?.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
