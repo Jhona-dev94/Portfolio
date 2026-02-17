@@ -1,12 +1,4 @@
----
-let open = false;
-
-const toggleMenu = () => {
-  open = !open;
-};
----
-
-<section id="header" class="sticky top-0">
+<section id="header" class="fixed left-0 w-full top-0 z-10 ">
   <nav
     class="bg-surface min-h-20 flex justify-around items-center border-b-2 border-accent"
   >
@@ -56,18 +48,8 @@ const toggleMenu = () => {
     </div>
     <div class="md:hidden">
       <button id="menuToggle" class="text-primary">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"></path>
+        <svg class="size-6 text-primary stroke-current">
+          <use href="/sprite.svg#hamburguer"/>
         </svg>
       </button>
     </div>
@@ -85,10 +67,10 @@ const toggleMenu = () => {
         src="/images/logolight.webp"
         alt="logo"
       />
-      <li class="hover:text-primary cursor-pointer"><a href="#hero">INICIO</a></li>
-      <li class="hover:text-primary cursor-pointer"><a href="#proyect">PROYECTOS</a></li>
-      <li class="hover:text-primary cursor-pointer"><a href="#about">SOBRE MI</a></li>
-      <li class="hover:text-primary cursor-pointer"><a href="#contact">CONTACTO</a></li>
+      <li class="hover:text-primary cursor-pointer"><a href="#hero">HOME</a></li>
+      <li class="hover:text-primary cursor-pointer"><a href="#proyect">PROYECTS</a></li>
+      <li class="hover:text-primary cursor-pointer"><a href="#about">ABOUT ME</a></li>
+      <li class="hover:text-primary cursor-pointer"><a href="#contact">CONTACTS</a></li>
     </ul>
   </div>
 </section>
