@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css"
+---
+<Layout title="Página no encontrada - Jhonatan's Portfolio">
+    <main class="bg-linear-to-r from-background to-surface flex min-h-screen items-center justify-center animate-fade-in">
+    <div
+      class="container mx-auto flex flex-col items-center px-4 md:flex-row md:items-start md:justify-center md:space-x-12"
+    >
+      <div class="max-w-lg text-center">
+        <h2 class="mb-4 text-3xl font-bold text-accent uppercase md:text-4xl">
+          Page not found
+        </h2>
+        <img src="/images/404.webp" alt="NotFoundImg">
+        <p class="mx-8 mb-8 text-lg text-balance text-accent opacity-85">
+          ¡Hi! We sorry, but we cannot find the page you are looking for. check out if the URL is correct.
+        </p>
+        <a
+          href="/"
+          class="bg-accent hover:bg-accent/80 inline-block rounded-full px-8 py-3 font-bold text-primary transition-colors hover:scale-105"
+        >
+          BACK HOME
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

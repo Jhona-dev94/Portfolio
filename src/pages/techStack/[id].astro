@@ -1,0 +1,63 @@
+---
+export const prerender = true;
+import "../../styles/global.css";
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const techStack = await getCollection("techStack");
+    return techStack.map((stack) => ({
+        params: { id: stack.slug },
+    }));
+}
+
+const { id } = Astro.params;
+const techStack = await getCollection("techStack");
+const stack = techStack.find((b) => b.slug === id);
+
+if (!stack) throw new Error(`Stack no encontrado: ${id}`);
+
+const { data, slug } = stack;
+const {
+    label,
+    name,
+    icon,
+    tooltip
+
+} = data;
+
+const { Content } = await render(stack);
+---
+<Layout title={`${name} - Jhonatan's Portfolio`}>
+  <div class="relative flex flex-col md:flex-row gap-12 justify-center items-center min-h-screen bg-secondary/80 overflow-hidden">
+    <div class="absolute right-0 top-1/2 -translate-y-1/2  translate-x-1/2 md:translate-x-0  opacity-10 blur-md pointer-events-none">
+      <svg class="size-150">
+        <use href={icon}/>
+      </svg>
+    </div>
+
+    <aside class="relative flex justify-center items-center">
+      <svg class="size-50 md:size-72" transition:name={`img-${slug}`}>
+        <use href={icon}/>
+      </svg>
+    </aside>
+
+    <main class="relative max-w-3xl items-start justify-start">
+      <h1 class="text-4xl px-2 md:text-7xl text-surface uppercase font-primary animate-fade-in-down">{name}</h1>
+
+      <div class="prose text-sx text-justify md:prose-2xl text-surface animate-fade-in-down animate-delay-300 px-4">
+        <Content />
+      </div>
+
+      <button class="animate-fade-in-down animate-delay-500 px-2">
+        <a
+        href="/#about"
+        data-astro-reload
+        class="mt-8 inline-block rounded-full bg-accent px-8 py-3 font-bold text-surface transition hover:scale-105 hover:bg-accent/80"
+      >
+        BACK HOME
+      </a>
+      </button>
+    </main>
+  </div>
+</Layout>
