@@ -2,12 +2,28 @@
   <div
     class="bg-background min-h-screen flex flex-col md:flex-row justify-center md:justify-around items-center text-center"
   >
-    <div class="flex justify-items-center">
-      <div
-        class="mt-20 md:mt-0 size-60 md:size-100 lg:size-120 mask-radial-from-60% mask-radial-to-70% bg-[url(/images/Perfil.webp)] bg-cover bg-center"
-      >
-      </div>
-    </div>
+    <div class="relative flex justify-center items-center">
+
+  <!-- SVG decorativo -->
+   <svg
+    class="absolute
+           opacity-90 mt-20 md:mt-0 md:pt-5
+           size-69 lg:size-130
+           z-0"
+    fill="var(--color-accent)"
+  >
+    <use href="/sprite.svg#perfil"></use>
+  </svg>
+
+  <!-- Imagen -->
+  <div
+    class="relative z-10 mt-20 md:mt-0 size-60 md:size-80 lg:size-100
+           mask-radial-from-60% mask-radial-to-70%
+           bg-[url(/images/Perfil.webp)] bg-cover bg-center"
+  >
+  </div>
+
+</div>
     <div class="py-4 md:pt-0">
       <span
         class="md:[writing-mode:vertical-rl] md:[text-orientation:upright] text-primary font-primary text-lg text- bold md:text-2xl tracking-widest"
@@ -44,7 +60,7 @@
             </h3>
           </div>
           <div class="bg-linear-to-b from-secondary to-background/50 rounded-b-lg">
-            <p class="m-4 text-background prose font-secondary">
+            <p class="m-4 text-background prose font-secondary text-justify">
               I’m currently available for freelance work and exciting projects.
               If you have an idea in mind, let’s talk about it. I usually reply
               within 24 hours.

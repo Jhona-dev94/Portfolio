@@ -1,3 +1,162 @@
-<section id="about" class="min-h-screen bg-background">
-    <h1 class="text-secondary">Sobre mi</h1>
+---
+import { getCollection } from "astro:content";
+const techStack = await getCollection("techStack");
+
+const skillArray = [
+  {
+    name: "Languages",
+    styles: {
+      bg: "bg-red-400/10",
+      text: "text-red-400",
+      ring: "inset-ring-red-400/20",
+    },
+  },
+  {
+    name: "Frameworks, Libraries & styles",
+    styles: {
+      bg: "bg-yellow-400/10",
+      text: "text-yellow-400",
+      ring: "inset-ring-yellow-400/20",
+    },
+  },
+  {
+    name: "Databases",
+    styles: {
+      bg: "bg-accent/10",
+      text: "text-accent",
+      ring: "inset-ring-accent/20",
+    },
+  },
+  {
+    name: "Tools & Platforms",
+    styles: {
+      bg: "bg-blue-400/10",
+      text: "text-blue-400",
+      ring: "inset-ring-blue-400/20",
+    },
+  },
+];
+---
+<section
+  id="about"
+  class="relative min-h-screen flex pt-20 bg-surface transition-colors duration-200 animate-fade-in"
+>
+  <div class="relative z-10 flex flex-col md:flex-row md:gap-16 w-full px-10">
+    <div class="w-full md:w-1/2">
+      <div class="prose prose-xl text-justify mx-0 lg:mx-4 ">
+        <h2 class="text-3xl md:text-5xl font-primary text-accent mb-6">
+          Who am I?
+        </h2>
+        <article class="text-secondary text-lg md:text-2xl">
+          I love building modern, scalable and user-centered digital
+          experiences. I focus on writing clean, maintainable code while
+          delivering interfaces that are intuitive, performant and visually
+          refined. My goal is simple: create products that users genuinely enjoy
+          interacting with. I work with these parameters:
+        </article>
+        <ul
+          class="list-none text-md md:text-lg text-primary mt-6 space-y-2"
+        >
+          <li class="flex items-center">
+            <svg class="size-8 mr-2 text-accent">
+              <use href="/sprite.svg#num1"></use>
+            </svg>
+            Clean architecture
+          </li>
+          <li class="flex items-center">
+            <svg class="size-8 mr-2 text-accent">
+              <use href="/sprite.svg#num2"></use>
+            </svg>
+            Performance optimization
+          </li>
+          <li class="flex items-center">
+            <svg class="size-8 mr-2 text-accent">
+              <use href="/sprite.svg#num3"></use>
+            </svg>
+            Responsive interfaces
+          </li>
+          <li class="flex items-center">
+            <svg class="size-8 mr-2 text-accent">
+              <use href="/sprite.svg#num4"></use>
+            </svg>
+            Detail-oriented execution
+          </li>
+        </ul>
+        <article class="text-secondary text-lg md:text-2xl mt-6">
+          I'm always learning, improving and pushing my standards higher—
+          because good isn’t enough when building meaningful digital products.
+        </article>
+      </div>
+    </div>
+
+    <div class="flex flex-col w-full md:w-1/2">
+      <h2 class="text-3xl md:text-5xl py-5 md:pt-0 font-primary text-accent">
+        My Tech Stack
+      </h2>
+      {
+        skillArray.map((skill) => (
+          <div class="flex flex-col">
+            <span
+              class={`self-start inline-flex items-center rounded-md 
+              ${skill.styles.bg} 
+              ${skill.styles.text} 
+              ${skill.styles.ring} 
+              px-2 py-1 text-xs font-medium ring-1 inset-ring`}
+            >
+              {skill.name}
+            </span>
+            <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 py-5">
+              {techStack
+                .filter((tech) => tech.data.label === skill.name)
+                .map(({ slug, data }) => {
+                  const { name, icon } = data;
+                  return (
+                    <a href={`/techStack/${slug}`}>
+                    <div class="relative group flex flex-col justify-center items-center bg-secondary/20 rounded-full p-2 cursor-pointer size-14 ring-1 ring-accent
+                    hover:animate-tada">
+                      
+                        <svg class="size-8" transition:name={`img-${slug}`}>
+                          <use href={icon} />
+                        </svg>
+                      
+                      <span class="md:hidden text-xs text-primary">{name}</span>
+                      <div
+                        class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+                                 opacity-0 group-hover:opacity-100
+                                 transition-opacity duration-200
+                                 pointer-events-none
+                                 bg-background text-primary text-xs
+                                 px-2 py-1 rounded-md whitespace-nowrap shadow-md"
+                      >
+                        {name}
+                      </div>
+                    </div>
+                    </a>
+                  );
+                })}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </section>
+
+<script>
+  const about = document.getElementById("about");
+
+  about?.addEventListener("mousemove", (e) => {
+    const rect = about.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    about.style.background = `
+      radial-gradient(
+        circle at ${x}px ${y}px,
+        rgba(11,160,120,0.15),
+        transparent 40%
+      ),
+      var(--color-surface)
+    `;
+  });
+</script>
