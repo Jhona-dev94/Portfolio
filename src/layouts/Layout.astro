@@ -5,18 +5,31 @@ interface Props {
   title: string;
 }
 
-const {title} = Astro.props;
+const { title } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/images/logoweb.svg" sizes="128x128" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/images/logoweb.svg"
+      sizes="128x128"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Spinnaker-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ClientRouter/>
-     <script is:inline>
+    <ClientRouter />
+    <script is:inline>
       const theme = localStorage.getItem("theme");
 
       if (theme === "dark") {

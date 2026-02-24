@@ -15,13 +15,20 @@
     <use href="/sprite.svg#perfil"></use>
   </svg>
 
-  <!-- Imagen -->
   <div
-    class="relative z-10 mt-20 md:mt-0 size-60 md:size-80 lg:size-100
-           mask-radial-from-60% mask-radial-to-70%
-           bg-[url(/images/Perfil.webp)] bg-cover bg-center"
-  >
-  </div>
+  class="relative z-10 mt-20 md:mt-0 size-60 md:size-80 lg:size-100
+         mask-radial-from-60% mask-radial-to-70% overflow-hidden"
+>
+  <img
+    src="/images/Perfil.webp"
+    alt="Jhonatan Vargas"
+    class="w-full h-full object-cover"
+    fetchpriority="high"
+    loading="eager"
+    width="400"
+    height="400"
+  />
+</div>
 
 </div>
     <div class="py-4 md:pt-0">
