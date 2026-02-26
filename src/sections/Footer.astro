@@ -1,3 +1,77 @@
-<section class="min-h-64 bg-surface">
-    <h1>Sobre mi</h1>
+<section class="min-h-75 bg-surface flex flex-col justify-center">
+  <div class="grid grid-cols-1 md:grid-cols-3 m-4 gap-8">
+    <div class="col-span-1 flex flex-col items-start gap-4">
+      <img id="logofooter" src="/images/logodark.webp" class="h-12" alt="icono" />
+      <div>
+        <h2 class="text-3xl font-secondary uppercase text-accent">
+          Frontend Developer
+        </h2>
+        <p class="text-primary text-justify">
+          Passionate about building modern, responsive, and accessible web
+          applications. Always improving my skills and ready to create impactful
+          digital experiences.
+        </p>
+      </div>
+    </div>
+    <div class="text-center flex flex-col gap-4 items-center">
+      <h2 class="text-3xl text-accent font-secondary uppercase">Let's Talk</h2>
+      <a href="https://wa.me/59176721388?text=Hello%20Jhonatan,%20I%20would%20like%20to%20work%20with%20you." target="_blank" class="flex gap-2 items-center hover:animate-pulsing">
+        <svg class="size-8">
+          <use href="/sprite.svg#whatsapp"></use>
+        </svg>
+        <p class="text-accent font-bold">WhatsApp</p>
+      </a>
+      <a href="https://www.linkedin.com/in/jhonavargas94" target="_blank" class="flex gap-2 items-center hover:animate-pulsing">
+        <svg class="size-8">
+          <use href="/sprite.svg#linkedin"></use>
+        </svg>
+        <p class="text-blue-600 font-bold">Linkedin</p>
+      </a>
+      <a href="mailto:jonah_9420@hotmail.com?subject=Project%20Inquiry&body=Hello%20Jhonatan,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" class="flex gap-2 items-center hover:animate-pulsing">
+        <svg class="size-8">
+          <use href="/sprite.svg#outlook"></use>
+        </svg>
+        <p class="text-primary font-bold">
+          Outlook
+        </p>
+      </a>
+    </div>
+    <div class="col-span-1">
+      <p class="text-center text-accent text-3xl uppercase font-secondary">Availability</p>
+      <ul class="text-primary pointer-none text-center text-xl space-y-6 mt-4">
+        <li>
+          <span>Inmediate</span>
+        </li>
+        <li>Remote</li>
+        <li>On-site</li>
+      </ul>
+    </div>
+  </div>
 </section>
+<div class="border-t-2 border-accent h-12 flex justify-center items-center">
+  <p class="text-center text-primary">Copyright ©2026 Jhonatan Vargas</p>
+</div>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.documentElement;
+    const logo = document.getElementById("logofooter");
+
+    const updateLogo = () => {
+      const isDark = root.classList.contains("dark");
+      logo.src = isDark
+        ? "/images/logodark.webp"
+        : "/images/logolight.webp";
+    };
+
+    // Ejecutar al cargar
+    updateLogo();
+
+    // Observar cambios en la clase del html
+    const observer = new MutationObserver(updateLogo);
+
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  });
+</script>
