@@ -1,6 +1,102 @@
 ---
+import { getCollection, render } from "astro:content";
 
+const projects = await getCollection("proyect");
 ---
-<section id="proyect" class="min-h-screen bg-accent pt-20">
-    <h1>Proyectos</h1>
+
+<section
+  id="proyect"
+  class="relative min-h-screen bg-background overflow-hidden pt-20"
+>
+  <div
+    class="absolute inset-0 bg-radial from-accent to-transparent blur-3xl "
+  >
+  </div>
+
+  <h2 class="text-accent text-5xl text-center uppercase font-primary relative z-10">Projects</h2>
+
+  <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 p-10">
+    {
+      projects.map(async (project) => {
+        const { Content } = await render(project);
+        const { title, type, role, stack } = project.data;
+        return (
+          <div class="flex justify-center items-center">
+            <div class="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1">
+              <div class="text-primary rounded-3xl border border-accent bg-transparent shadow-2xl duration-700 relative backdrop-blur-xl hover:border-primary overflow-hidden hover:shadow-white/5 hover:shadow-3xl w-full max-w-sm hover:bg-linear-to-br from-background to-background/50">
+                <div class="absolute inset-0 z-0 overflow-hidden">
+                  <div class="absolute inset-0 bg-linear-to-tr from-primary/5 to-primary/10 opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+
+                  <div class="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-linear-to-tr from-primary/10 to-transparent blur-3xl opacity-30 group-hover:opacity-50 transform group-hover:scale-110 transition-all duration-700" />
+
+                  <div class="absolute top-10 left-10 w-16 h-16 rounded-full bg-white/5 blur-xl animate-ping" />
+
+                  <div class="absolute bottom-16 right-16 w-12 h-12 rounded-full bg-white/5 blur-lg animate-ping" />
+
+                  <div class="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000" />
+                </div>
+
+                <div class="p-8 relative z-10">
+                  <div class="flex flex-col items-center text-center">
+                    <div class="relative mb-6">
+                      <div class="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
+
+                      <div
+                        style="animation-delay:0.5s"
+                        class="absolute inset-0 rounded-full border border-white/10 animate-pulse"
+                      />
+
+                      <div class="p-6 rounded-full backdrop-blur-lg border-2 border-primary bg-linear-to-br from-background/80 to-background/60 shadow-2xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                        <div class="transform group-hover:rotate-180 transition-transform duration-700">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            class="w-8 h-8 fill-current text-primary group-hover:text-primary transition-colors duration-300 filter drop-shadow-lg"
+                          >
+                            <path d="M5.164 0L.16 18.928L18.836 24L23.84 5.072L5.164 0ZM14.023 15.208L8.792 13.469L10.436 8.152L15.667 9.891L14.023 15.208Z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4 transform group-hover:scale-105 transition-transform duration-300">
+                      <p class="text-3xl font-bold bg-primary  bg-clip-text text-transparent animate-pulse">
+                        {title}
+                      </p>
+                    </div>
+
+                    <div class="space-y-1 max-w-sm">
+                      <p class="text-primary/70 text-sm font-semibold leading-relaxed group-hover:text-primary transition-colors duration-300">
+                        {type}
+                      </p>
+
+                      <p class="text-primary/70 text-sm leading-relaxed group-hover:text-primary transition-colors duration-300">
+                        {role}
+                      </p>
+                      <p class="prose text-primary text-justify">
+                        <Content />
+                      </p>
+                    </div>
+                    <div class="mt-6 w-1/2 h-0.5 bg-linear-to-r from-transparent via-primary to-transparent rounded-full group-hover:w-80 group-hover:h-1 transition-all duration-500" />
+                    <div class="flex gap-2 mt-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                      {stack.map((item) => {
+                        return (
+                          <svg class="size-8 animate-bounce animate-duration-2000">
+                            <use href={item} />
+                          </svg>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+                <div class="absolute top-0 left-0 w-20 h-20 bg-linear-to-br from-primary/10 to-transparent rounded-br-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div class="absolute bottom-0 right-0 w-20 h-20 bg-linear-to-tl from-primary/10 to-transparent rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
 </section>
