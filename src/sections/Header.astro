@@ -1,12 +1,14 @@
 <section id="header" class="fixed left-0 w-full top-0 z-100 ">
   <nav
-    class="bg-surface min-h-20 flex justify-around items-center border-b-2 border-accent"
+    class="bg-surface min-h-20 flex justify-around items-center border-b-2 border-accent animate-fade-in"
   >
     <div>
       <img
-        class="h-8 w-auto md:h-10"
+        class="h-8 w-auto md:h-10 animate-fade-in-down animate-duration-500"
         id="logoDesktop"
         src="/images/logolight.webp"
+        width="80"
+        height="40"
         alt="logo"
       />
     </div>
@@ -15,22 +17,22 @@
       class="font-accent font-bold text-secondary hidden md:flex md:justify-around md:items-center md:gap-8 lg:gap-28"
     >
       <li
-        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent "
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent animate-fade-in-down animate-duration-800"
       >
         <a href="#hero">HOME</a>
       </li>
       <li
-        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent"
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent animate-fade-in-down animate-duration-1000"
       >
         <a href="#proyect">PROYECTS</a>
       </li>
       <li
-        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent"
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent animate-fade-in-down animate-duration-1200"
       >
         <a href="#about">ABOUT ME</a>
       </li>
       <li
-        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent"
+        class="cursor-pointer hover:text-primary hover:border-b-2 hover:border-accent animate-fade-in-down animate-duration-1400"
       >
         <a href="#contact">RESUME</a>
       </li>
@@ -41,12 +43,12 @@
         <input id="themeToggle" class="sr-only peer" type="checkbox" aria-label="Toggle dark mode" />
         <div
           class="w-12 h-6 rounded-full bg-linear-to-r from-background to-accent peer-checked:from-accent peer-checked:to-background transition-all duration-500
-        after:content-['☀️'] after:absolute after:top-0.5 after:left-0.5 after:bg-background after:rounded-full after:w-5 after:h-5 after:flex after:items-center after:justify-center after:text-xs after:text-foreground after:shadow-md after:transition-all after:duration-500 peer-checked:after:content-['🌙'] peer-checked:after:translate-x-6 md:w-20 md:h-10 md:after:w-8 md:after:h-8 md:after:top-1 md:after:left-1 md:after:text-lg md:peer-checked:after:translate-x-10"
+        after:content-['☀️'] after:absolute after:top-0.5 after:left-0.5 after:bg-background after:rounded-full after:w-5 after:h-5 after:flex after:items-center after:justify-center after:text-xs after:text-foreground after:shadow-md after:transition-all after:duration-500 peer-checked:after:content-['🌙'] peer-checked:after:translate-x-6 md:w-20 md:h-10 md:after:w-8 md:after:h-8 md:after:top-1 md:after:left-1 md:after:text-lg md:peer-checked:after:translate-x-10 animate-fade-in-down animate-duration-800 md:animate-duration-1600"
         >
         </div>
       </label>
     </div>
-    <div class="md:hidden">
+    <div class="md:hidden animate-fade-in-down animate-duration-1000">
       <button id="menuToggle" class="text-primary" aria-label="Toggle mobile menu">
         <svg class="size-6 text-primary stroke-current">
           <use href="/sprite.svg#hamburguer"/>
@@ -61,12 +63,16 @@
          md:hidden z-50"
   >
     <ul class="flex flex-col gap-6 mt-24 px-6 font-accent text-secondary">
-      <img
+      <li>
+        <img
         class="h-10 md:h-10"
         id="logoMobile"
+        width="83"
+        height="40"
         src="/images/logolight.webp"
         alt="logo"
       />
+      </li>
       <li class="hover:text-primary cursor-pointer"><a href="#hero">HOME</a></li>
       <li class="hover:text-primary cursor-pointer"><a href="#proyect">PROYECTS</a></li>
       <li class="hover:text-primary cursor-pointer"><a href="#about">ABOUT ME</a></li>

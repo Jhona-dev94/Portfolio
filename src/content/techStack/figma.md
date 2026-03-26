@@ -4,4 +4,4 @@ name: "Figma"
 icon: "/sprite.svg#fig"
 tooltip: "Click on me" 
 ---
-I use Figma to review designs, extract UI specifications, and translate visual concepts into responsive and consistent interfaces during development.
+I use Figma to review designs and translate them into responsive and consistent user interfaces.

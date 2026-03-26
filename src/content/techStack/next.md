@@ -4,4 +4,4 @@ name: "Next.Js"
 icon: "/sprite.svg#next"
 tooltip: "Click on me" 
 ---
-I use Next.js to build modern React applications with optimized performance and SEO. I take advantage of its file-based routing, server-side rendering, and API routes to create scalable and production-ready web solutions.
+I use Next.js to build modern React applications with optimized performance and SEO. I use its routing, server-side rendering, and API routes to create scalable web solutions.

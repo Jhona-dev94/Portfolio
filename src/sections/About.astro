@@ -37,14 +37,17 @@ const skillArray = [
   },
 ];
 ---
+
 <section
   id="about"
-  class="relative min-h-screen flex pt-20 bg-surface transition-colors duration-200 animate-fade-in"
+  class="relative min-h-screen flex pt-20 bg-surface"
 >
-  <div class="relative z-10 flex flex-col md:flex-row md:gap-16 w-full px-10">
+  <div class="relative z-10 flex flex-col md:flex-row md:gap-16 w-full px-10 timeline-view animate-fade-in animate-range-[entry_10%_contain_20%]">
     <div class="w-full md:w-1/2">
-      <div class="prose prose-xl text-justify mx-0 lg:mx-4 ">
-        <h2 class="text-3xl md:text-5xl uppercase font-primary text-accent mb-6">
+      <div class="prose prose-xl text-justify mx-0 lg:mx-4">
+        <h2
+          class="text-3xl md:text-5xl uppercase font-primary text-accent mb-6"
+        >
           Who am I?
         </h2>
         <article class="text-secondary text-lg md:text-2xl">
@@ -54,9 +57,7 @@ const skillArray = [
           refined. My goal is simple: create products that users genuinely enjoy
           interacting with. I work with these parameters:
         </article>
-        <ul
-          class="list-none text-md md:text-lg text-primary mt-6 space-y-2"
-        >
+        <ul class="list-none text-md md:text-lg text-primary mt-6 space-y-2">
           <li class="flex items-center">
             <svg class="size-8 mr-2 text-accent">
               <use href="/sprite.svg#num1"></use>
@@ -90,7 +91,9 @@ const skillArray = [
     </div>
 
     <div id="skills" class="flex flex-col w-full md:w-1/2">
-      <h2 class="text-3xl md:text-5xl py-5 uppercase md:pt-0 font-primary text-accent">
+      <h2
+        class="text-3xl md:text-5xl py-5 uppercase md:pt-0 font-primary text-accent"
+      >
         My Tech Stack
       </h2>
       {
@@ -112,25 +115,28 @@ const skillArray = [
                   const { name, icon } = data;
                   return (
                     <a href={`/techStack/${slug}`}>
-                    <div class="relative group flex flex-col justify-center items-center bg-secondary/20 rounded-full p-2 cursor-pointer size-14 ring-1 ring-accent
-                    hover:animate-tada">
-                      
+                      <div
+                        class="relative group flex flex-col justify-center items-center bg-secondary/20 rounded-full p-2 cursor-pointer size-14 ring-1 ring-accent
+                    hover:animate-tada"
+                      >
                         <svg class="size-8" transition:name={`img-${slug}`}>
                           <use href={icon} />
                         </svg>
-                      
-                      <span class="md:hidden text-xs text-primary">{name}</span>
-                      <div
-                        class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+
+                        <span class="md:hidden text-xs text-primary">
+                          {name}
+                        </span>
+                        <div
+                          class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
                                  opacity-0 group-hover:opacity-100
                                  transition-opacity duration-200
                                  pointer-events-none
                                  bg-background text-primary text-xs
                                  px-2 py-1 rounded-md whitespace-nowrap shadow-md"
-                      >
-                        {name}
+                        >
+                          {name}
+                        </div>
                       </div>
-                    </div>
                     </a>
                   );
                 })}
