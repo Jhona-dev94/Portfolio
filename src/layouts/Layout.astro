@@ -20,13 +20,16 @@ const { title } = Astro.props;
       sizes="128x128"
     />
     <link
-      rel="preload"
-      href="/fonts/Spinnaker-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    rel="preload"
+    as="image"
+    href="/images/Perfil.webp"
+  />
+  <meta 
+    name="description" 
+    content="Frontend Developer portfolio of Jhonatan Vargas. Clean interfaces, solid code, and real results. Explore projects and contact information." 
+  />
     <meta name="generator" content={Astro.generator} />
+    
     <title>{title}</title>
     <ClientRouter />
     <script is:inline>
@@ -38,7 +41,9 @@ const { title } = Astro.props;
     </script>
   </head>
   <body>
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 

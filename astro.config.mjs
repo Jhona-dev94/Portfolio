@@ -1,12 +1,15 @@
-// @ts-check
-// @ts-ignore
 import { defineConfig } from "astro/config";
-// @ts-ignore
 import tailwindcss from "@tailwindcss/vite";
 
-// https://astro.build/config
 export default defineConfig({
+  output: "static", // importante
+
   vite: {
     plugins: [tailwindcss()],
+
+    build: {
+      minify: "esbuild",
+      cssMinify: true,
+    },
   },
 });

@@ -1,0 +1,59 @@
+---
+
+---
+
+<div class="w-full my-10 hidden lg:block">
+  <div class="flex justify-center gap-4 mb-6 items-center">
+    <button
+      id="btn-es"
+      class="px-5 py-2 rounded-full bg-accent text-surface font-semibold transition hover:scale-105"
+    >
+      Español
+    </button>
+
+    <button
+      id="btn-en"
+      class="px-5 py-2 rounded-full border border-accent text-accent font-semibold transition hover:scale-105"
+    >
+      English
+    </button>
+  </div>
+
+  <div
+    id="pdf-viewer"
+    class="w-full max-w-4xl h-162 mx-auto rounded-2xl overflow-hidden shadow-xl border border-border"
+  ></div>
+</div>
+
+<script>
+  import PDFObject from "pdfobject";
+
+  const viewer = "#pdf-viewer";
+  const pdfES = "/docs/curriculum-vitae.pdf";
+  const pdfEN = "/docs/EN-curriculum.pdf";
+
+  PDFObject.embed(pdfES, viewer);
+
+  const btnES = document.getElementById("btn-es");
+  const btnEN = document.getElementById("btn-en");
+
+  btnES?.addEventListener("click", () => {
+    PDFObject.embed(pdfES, viewer);
+
+    btnES.classList.add("bg-accent", "text-surface");
+    btnES.classList.remove("border", "border-accent", "text-accent");
+
+    btnEN?.classList.remove("bg-accent", "text-surface");
+    btnEN?.classList.add("border", "border-accent", "text-accent");
+  });
+
+  btnEN?.addEventListener("click", () => {
+    PDFObject.embed(pdfEN, viewer);
+
+    btnEN.classList.add("bg-accent", "text-surface");
+    btnEN.classList.remove("border", "border-accent", "text-accent");
+
+    btnES?.classList.remove("bg-accent", "text-surface");
+    btnES?.classList.add("border", "border-accent", "text-accent");
+  });
+</script>

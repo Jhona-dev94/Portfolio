@@ -1,99 +1,47 @@
+---
+import { ParseStatus } from "astro:schema"
+import PDFviewer from "../components/PDFviewer.astro"
+---
 <section
   id="contact"
   class="min-h-screen bg-background flex flex-col justify-center items-center pt-20"
 >
-  <h2
-    class="text-5xl md:text-6xl py-2 md:py-5 md:pt-0 font-primary text-accent prose"
+  <div
+    class="timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_20%]"
   >
-    What's next?
-  </h2>
-  <p
-    class="mx-6 text-primary text-md md:text-xl font-primary text-justify prose"
-  >
-    I’m ready to take on new challenges where I can create scalable,
-    user-focused applications and continue growing as a frontend developer.
-    Whether it's collaborating with a team or building impactful products, I’m
-    excited about what comes next.
-    <br />
-    Feel free to download my resume in English or Spanish below.
-  </p>
-  <div>
-    <div class="block lg:hidden my-10">
-      <button>
-        <a
-          href="/docs/curriculum-vitae.pdf"
-          target="_blank"
-          class="px-5 py-2 rounded-full bg-accent text-surface font-semibold transition hover:scale-105"
-        >
-          Download EN
-        </a>
-      </button>
-
-      <button>
-        <a
-          href="/docs/cv-eng.pdf"
-          target="_blank"
-          class="px-5 py-2 rounded-full border border-accent text-accent font-semibold transition hover:scale-105"
-        >
-          Download ES
-        </a>
-      </button>
-    </div>
-    <div class="w-full my-10 hidden lg:block">
-      <div class="flex justify-center gap-4 mb-6">
-        <button
-          id="btn-es"
-          class="px-5 py-2 rounded-full bg-accent text-surface font-semibold transition hover:scale-105"
-        >
-          Español
-        </button>
-
-        <button
-          id="btn-en"
-          class="px-5 py-2 rounded-full border border-accent text-accent font-semibold transition hover:scale-105"
-        >
-          English
-        </button>
+    <h2
+      class="text-5xl md:text-6xl text-center py-2 md:py-5 md:pt-0 font-primary text-accent prose"
+    >
+      What's next?
+    </h2>
+    <p
+      class="mx-6 text-primary text-md md:text-xl font-primary text-justify prose"
+    >
+      I’m ready to take on new challenges where I can create scalable,
+      user-focused applications and continue growing as a frontend developer.
+      Whether it's collaborating with a team or building impactful products, I’m
+      excited about what comes next.
+      <br />
+      Feel free to download my resume in English or Spanish below.
+    </p>
+    <div>
+      <div class="lg:hidden my-10 flex justify-center items-center gap-5">
+          <a
+            href="/docs/curriculum-vitae.pdf"
+            target="_blank"
+            class="px-5 py-2 rounded-full bg-accent text-surface font-semibold transition hover:scale-105"
+          >
+            Download EN
+          </a>
+          <a
+            href="/docs/EN-curriculum.pdf"
+            target="_blank"
+            class="px-5 py-2 rounded-full border border-accent text-accent font-semibold transition hover:scale-105"
+          >
+            Download ES
+          </a>
       </div>
-      <div
-        id="pdf-viewer"
-        class="w-200 h-100 rounded-2xl overflow-hidden shadow-xl border border-border"
-      >
-      </div>
+      <PDFviewer client:visible/>
     </div>
   </div>
 </section>
-
-<script>
-  import PDFObject from "pdfobject";
-
-  const viewer = "#pdf-viewer";
-  const pdfES = "/docs/curriculum-vitae.pdf";
-  const pdfEN = "/docs/cv-eng.pdf";
-
-  // Cargar español por defecto
-  PDFObject.embed(pdfES, viewer);
-
-  const btnES = document.getElementById("btn-es");
-  const btnEN = document.getElementById("btn-en");
-
-  btnES?.addEventListener("click", () => {
-    PDFObject.embed(pdfES, viewer);
-
-    btnES.classList.add("bg-accent", "text-surface");
-    btnES.classList.remove("border", "border-accent", "text-accent");
-
-    btnEN?.classList.remove("bg-accent", "text-surface");
-    btnEN?.classList.add("border", "border-accent", "text-accent");
-  });
-
-  btnEN?.addEventListener("click", () => {
-    PDFObject.embed(pdfEN, viewer);
-
-    btnEN.classList.add("bg-accent", "text-surface");
-    btnEN.classList.remove("border", "border-accent", "text-accent");
-
-    btnES?.classList.remove("bg-accent", "text-surface");
-    btnES?.classList.add("border", "border-accent", "text-accent");
-  });
-</script>
