@@ -1,10 +1,11 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import SpeedInsights from "@vercel/speed-insights/astro"
+import Analytics from '@vercel/analytics/astro'
 
 interface Props {
   title: string;
 }
-import SpeedInsights from "@vercel/speed-insights/astro"
 const { title } = Astro.props;
 ---
 
@@ -44,6 +45,7 @@ const { title } = Astro.props;
     <main>
       <slot />
       <SpeedInsights />
+      <Analytics />
     </main>
   </body>
 </html>
